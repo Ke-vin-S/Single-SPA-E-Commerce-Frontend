@@ -1,0 +1,37 @@
+{
+  "name": "@miniecommerce-sysco/mfe-products",
+  "version": "1.0.0",
+  "description": "Products feature micro-frontend",
+  "scripts": {
+    "build": "webpack --mode=production",
+    "dev": "webpack serve --mode=development --port 9005",
+    "lint": "tsc --noEmit",
+    "test": "echo \"no tests\" && exit 0"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-redux": "^9.1.2"
+  },
+  "dependencies": {
+    "@miniecommerce-sysco/mfe-design-system": "^1.0.0",
+    "@miniecommerce-sysco/mfe-domain-auth": "^1.0.0",
+    "@miniecommerce-sysco/mfe-domain-cart": "^1.0.0",
+    "@miniecommerce-sysco/shared-api": "^1.0.0",
+    "@miniecommerce-sysco/shared-code": "^1.0.0",
+    "@miniecommerce-sysco/shared-types": "^1.0.0",
+    "single-spa-react": "^6.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-redux": "^9.1.2",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.4.5",
+    "webpack": "^5.94.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.0.4"
+  }
+}

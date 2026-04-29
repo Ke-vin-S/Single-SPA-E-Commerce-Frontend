@@ -1,0 +1,40 @@
+{
+  "name": "single-spa-ecommerce",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Single-SPA micro-frontend e-commerce monorepo",
+  "workspaces": [
+    "libs/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "build": "npm run build --workspaces --if-present",
+    "build:libs": "npm run build -w libs/shared-types && npm run build -w libs/shared-code && npm run build -w libs/shared-api",
+    "build:design-system": "npm run build -w apps/mfe-design-system",
+    "build:shell": "npm run build -w apps/shell",
+    "build:domains": "npm run build -w apps/mfe-domain-auth && npm run build -w apps/mfe-domain-cart && npm run build -w apps/mfe-domain-user",
+    "build:features": "npm run build -w apps/mfe-products && npm run build -w apps/mfe-checkout && npm run build -w apps/mfe-admin",
+    "dev": "concurrently -k -n types,code,api,ds,shell,auth,cart,user,products,checkout,admin -c magenta,magenta,magenta,cyan,green,blue,blue,blue,yellow,yellow,yellow \"npm:dev:shared-types\" \"npm:dev:shared-code\" \"npm:dev:shared-api\" \"npm:dev:design-system\" \"npm:dev:shell\" \"npm:dev:auth\" \"npm:dev:cart\" \"npm:dev:user\" \"npm:dev:products\" \"npm:dev:checkout\" \"npm:dev:admin\"",
+    "dev:shell": "npm run dev -w apps/shell",
+    "dev:design-system": "npm run dev -w apps/mfe-design-system",
+    "dev:auth": "npm run dev -w apps/mfe-domain-auth",
+    "dev:cart": "npm run dev -w apps/mfe-domain-cart",
+    "dev:user": "npm run dev -w apps/mfe-domain-user",
+    "dev:products": "npm run dev -w apps/mfe-products",
+    "dev:checkout": "npm run dev -w apps/mfe-checkout",
+    "dev:admin": "npm run dev -w apps/mfe-admin",
+    "dev:shared-types": "npm run dev -w libs/shared-types",
+    "dev:shared-code": "npm run dev -w libs/shared-code",
+    "dev:shared-api": "npm run dev -w libs/shared-api",
+    "lint": "npm run lint --workspaces --if-present",
+    "test": "npm run test --workspaces --if-present",
+    "clean": "rm -rf node_modules apps/*/node_modules apps/*/dist libs/*/node_modules libs/*/dist"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "typescript": "^5.4.5"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

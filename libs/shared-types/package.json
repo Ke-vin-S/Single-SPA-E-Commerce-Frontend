@@ -1,0 +1,23 @@
+{
+  "name": "@miniecommerce-sysco/shared-types",
+  "version": "1.0.0",
+  "description": "Shared TypeScript interfaces and enums",
+  "main": "dist/miniecommerce-sysco-shared-types.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json && webpack --mode=production",
+    "dev": "webpack serve --mode=development --port 9101",
+    "clean": "rm -rf dist",
+    "lint": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.4.5",
+    "webpack": "^5.94.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.0.4"
+  }
+}

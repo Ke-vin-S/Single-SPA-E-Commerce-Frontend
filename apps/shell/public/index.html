@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>E-Commerce Shell</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap"
+  />
+
+  <script>
+    window.process = { env: { NODE_ENV: 'development' } };
+  </script>
+
+  <script type="importmap">
+  {
+    "imports": {
+      "react": "https://ga.jspm.io/npm:react@18.3.1/index.js",
+      "react-dom": "https://ga.jspm.io/npm:react-dom@18.3.1/index.js",
+      "react-dom/client": "https://ga.jspm.io/npm:react-dom@18.3.1/client.js",
+      "react-redux": "https://ga.jspm.io/npm:react-redux@9.1.2/dist/react-redux.mjs",
+      "single-spa": "https://ga.jspm.io/npm:single-spa@6.0.3/lib/es2015/esm/single-spa.min.js",
+
+      "@miniecommerce-sysco/shared-types": "http://localhost:9101/miniecommerce-sysco-shared-types.js",
+      "@miniecommerce-sysco/shared-code": "http://localhost:9102/miniecommerce-sysco-shared-code.js",
+      "@miniecommerce-sysco/shared-api": "http://localhost:9103/miniecommerce-sysco-shared-api.js",
+      "@miniecommerce-sysco/mfe-design-system": "http://localhost:9001/miniecommerce-sysco-mfe-design-system.js",
+      "@miniecommerce-sysco/mfe-domain-auth": "http://localhost:9002/miniecommerce-sysco-mfe-domain-auth.js",
+      "@miniecommerce-sysco/mfe-domain-cart": "http://localhost:9003/miniecommerce-sysco-mfe-domain-cart.js",
+      "@miniecommerce-sysco/mfe-domain-user": "http://localhost:9004/miniecommerce-sysco-mfe-domain-user.js",
+      "@miniecommerce-sysco/mfe-products": "http://localhost:9005/miniecommerce-sysco-mfe-products.js",
+      "@miniecommerce-sysco/mfe-checkout": "http://localhost:9006/miniecommerce-sysco-mfe-checkout.js",
+      "@miniecommerce-sysco/mfe-admin": "http://localhost:9007/miniecommerce-sysco-mfe-admin.js"
+    },
+    "scopes": {
+      "https://ga.jspm.io/": {
+        "scheduler": "https://ga.jspm.io/npm:scheduler@0.23.2/index.js",
+        "use-sync-external-store/with-selector.js": "https://ga.jspm.io/npm:use-sync-external-store@1.6.0/with-selector.js"
+      }
+    }
+  }
+  </script>
+
+</head>
+<body>
+  <div id="shell-root"></div>
+
+  <!-- Note: type="module" is required -->
+  <script type="module" src="./src/bootstrap.tsx"></script>
+</body>
+</html>

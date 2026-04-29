@@ -1,0 +1,21 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "jsx": "react-jsx",
+    "baseUrl": ".",
+    "paths": {
+      "@miniecommerce-sysco/mfe-design-system": ["../mfe-design-system/src"],
+      "@miniecommerce-sysco/mfe-domain-auth": ["../mfe-domain-auth/src"],
+      "@miniecommerce-sysco/mfe-domain-cart": ["../mfe-domain-cart/src"],
+      "@miniecommerce-sysco/mfe-domain-user": ["../mfe-domain-user/src"],
+      "@miniecommerce-sysco/shared-code": ["../../libs/shared-code/src"],
+      "@miniecommerce-sysco/shared-types": ["../../libs/shared-types/src"],
+      "@miniecommerce-sysco/shared-api": ["../../libs/shared-api/src"]
+    }
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
+}

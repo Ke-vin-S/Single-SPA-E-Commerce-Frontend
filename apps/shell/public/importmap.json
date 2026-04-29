@@ -1,0 +1,14 @@
+{
+  "imports": {
+    "@miniecommerce-sysco/shared-types": "http://localhost:9101/miniecommerce-sysco-shared-types.js",
+    "@miniecommerce-sysco/shared-code": "http://localhost:9102/miniecommerce-sysco-shared-code.js",
+    "@miniecommerce-sysco/shared-api": "http://localhost:9103/miniecommerce-sysco-shared-api.js",
+    "@miniecommerce-sysco/mfe-design-system": "http://localhost:9001/miniecommerce-sysco-mfe-design-system.js",
+    "@miniecommerce-sysco/mfe-domain-auth": "http://localhost:9002/miniecommerce-sysco-mfe-domain-auth.js",
+    "@miniecommerce-sysco/mfe-domain-cart": "http://localhost:9003/miniecommerce-sysco-mfe-domain-cart.js",
+    "@miniecommerce-sysco/mfe-domain-user": "http://localhost:9004/miniecommerce-sysco-mfe-domain-user.js",
+    "@miniecommerce-sysco/mfe-products": "http://localhost:9005/miniecommerce-sysco-mfe-products.js",
+    "@miniecommerce-sysco/mfe-checkout": "http://localhost:9006/miniecommerce-sysco-mfe-checkout.js",
+    "@miniecommerce-sysco/mfe-admin": "http://localhost:9007/miniecommerce-sysco-mfe-admin.js"
+  }
+}

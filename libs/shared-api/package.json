@@ -1,0 +1,30 @@
+{
+  "name": "@miniecommerce-sysco/shared-api",
+  "version": "1.0.0",
+  "description": "Shared axios client with interceptors",
+  "main": "dist/miniecommerce-sysco-shared-api.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json && webpack --mode=production",
+    "dev": "webpack serve --mode=development --port 9103",
+    "clean": "rm -rf dist",
+    "lint": "tsc --noEmit"
+  },
+  "dependencies": {
+    "axios": "^1.7.7"
+  },
+  "peerDependencies": {
+    "@miniecommerce-sysco/shared-types": "^1.0.0"
+  },
+  "devDependencies": {
+    "@miniecommerce-sysco/shared-types": "^1.0.0",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.4.5",
+    "webpack": "^5.94.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.0.4"
+  }
+}

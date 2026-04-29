@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Design System Showcase</title>
+    <script type="systemjs-importmap">
+      {
+        "imports": {
+          "react": "https://cdn.jsdelivr.net/npm/react@18.2.0/umd/react.production.min.js",
+          "react-dom": "https://cdn.jsdelivr.net/npm/react-dom@18.2.0/umd/react-dom.production.min.js",
+          "single-spa": "https://cdn.jsdelivr.net/npm/single-spa@6/lib/system/single-spa.min.js"
+        }
+      }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/systemjs@6/dist/system.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/systemjs@6/dist/extras/amd.min.js"></script>
+  </head>
+  <body>
+    <div id="design-system-root"></div>
+    <script>
+      System.import('http://localhost:9001/miniecommerce-sysco-mfe-design-system.js').then(function (module) {
+        module.mount({ domElement: document.getElementById('design-system-root') });
+      });
+    </script>
+  </body>
+</html>

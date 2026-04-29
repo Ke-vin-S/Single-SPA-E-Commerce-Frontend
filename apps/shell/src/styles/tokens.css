@@ -1,0 +1,95 @@
+:root {
+  --color-bg: #F8FAFC;
+  --color-surface: #FFFFFF;
+  --color-surface-alt: #EFF4F9;
+  --color-text: #0F1A2A;
+  --color-text-muted: #4A5C70;
+  --color-text-subtle: #8A95A5;
+  --color-border: #C5D2DF;
+  --color-border-soft: #E2E9F0;
+  --color-border-strong: #0F1A2A;
+
+  --color-accent: #0067A5;
+  --color-accent-hover: #00558A;
+  --color-accent-soft: #E1EEF7;
+  --color-accent-fg: #FFFFFF;
+
+  --color-success: #3F9142;
+  --color-success-soft: #E5F2E6;
+  --color-warning: #E0A50A;
+  --color-warning-soft: #FBEFC9;
+  --color-danger: #C0392B;
+  --color-danger-soft: #FDECEA;
+
+  --color-focus: #0067A5;
+  --color-overlay: rgba(15, 26, 42, 0.55);
+
+  --font-display: "Fraunces", "Times New Roman", Georgia, serif;
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-md: 1.125rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.5rem;
+  --text-2xl: 1.875rem;
+  --text-3xl: 2.25rem;
+  --text-4xl: 3rem;
+  --text-5xl: 3.75rem;
+
+  --lh-tight: 1.1;
+  --lh-snug: 1.25;
+  --lh-normal: 1.5;
+  --lh-relaxed: 1.625;
+
+  --track-tight: -0.02em;
+  --track-normal: 0;
+  --track-wide: 0.04em;
+
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  --space-0: 0;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+
+  --radius-none: 0;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-full: 9999px;
+
+  --shadow-xs: 0 1px 2px rgba(15, 26, 42, 0.04);
+  --shadow-sm: 0 1px 3px rgba(15, 26, 42, 0.06), 0 1px 2px rgba(15, 26, 42, 0.04);
+  --shadow-md: 0 4px 12px rgba(15, 26, 42, 0.08);
+  --shadow-lg: 0 12px 28px rgba(15, 26, 42, 0.12);
+  --shadow-xl: 0 24px 48px rgba(15, 26, 42, 0.16);
+
+  --motion-fast: 120ms;
+  --motion-base: 180ms;
+  --motion-slow: 280ms;
+  --ease-out: cubic-bezier(0.2, 0, 0, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+
+  --container-max: 1280px;
+  --container-prose: 720px;
+  --container-form: 440px;
+
+  --header-height: 72px;
+
+  --focus-ring: 0 0 0 2px var(--color-bg), 0 0 0 4px var(--color-focus);
+}
