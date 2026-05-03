@@ -1,5 +1,5 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
-import type { CartItem, CartState } from '@miniecommerce-sysco/shared-types';
+import type { CartItem, CartState, Order } from '@miniecommerce-sysco/shared-types';
 
 const initialState: CartState = {
   items: [],
@@ -7,6 +7,9 @@ const initialState: CartState = {
   itemCount: 0,
   isLoading: false,
   error: null,
+  orders: [],
+  ordersLoading: false,
+  ordersError: null,
 };
 
 const recompute = (items: CartItem[]) => ({
@@ -66,6 +69,15 @@ export const cartSlice = createSlice({
     setError: (state, action: PayloadAction<string | null>) => {
       state.error = action.payload;
     },
+    setOrders: (state, action: PayloadAction<Order[]>) => {
+      state.orders = action.payload;
+    },
+    setOrdersLoading: (state, action: PayloadAction<boolean>) => {
+      state.ordersLoading = action.payload;
+    },
+    setOrdersError: (state, action: PayloadAction<string | null>) => {
+      state.ordersError = action.payload;
+    },
   },
 });
 
@@ -77,6 +89,9 @@ export const {
   clearCart,
   setLoading,
   setError,
+  setOrders,
+  setOrdersLoading,
+  setOrdersError,
 } = cartSlice.actions;
 
 export const selectCart = (state: { cart?: CartState }): CartState | undefined =>

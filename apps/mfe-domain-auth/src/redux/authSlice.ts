@@ -2,30 +2,22 @@ import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 import type { AuthState, User } from '@miniecommerce-sysco/shared-types';
 
 const initialState: AuthState = {
-  token: null,
   user: null,
   isAuthenticated: false,
   isLoading: false,
   error: null,
 };
 
-interface SetAuthPayload {
-  token: string;
-  user: User;
-}
-
 export const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    setAuth: (state, action: PayloadAction<SetAuthPayload>) => {
-      state.token = action.payload.token;
-      state.user = action.payload.user;
+    setUser: (state, action: PayloadAction<User>) => {
+      state.user = action.payload;
       state.isAuthenticated = true;
       state.error = null;
     },
-    clearAuth: (state) => {
-      state.token = null;
+    clearUser: (state) => {
       state.user = null;
       state.isAuthenticated = false;
       state.error = null;
@@ -39,7 +31,13 @@ export const authSlice = createSlice({
   },
 });
 
-export const { setAuth, clearAuth, setLoading, setError } = authSlice.actions;
+export const { setUser, clearUser, setLoading, setError } = authSlice.actions;
 
 export const selectAuth = (state: { auth?: AuthState }): AuthState | undefined =>
   state?.auth;
+
+export const selectUser = (state: { auth?: AuthState }): User | null | undefined =>
+  state?.auth?.user;
+
+export const selectIsAuthenticated = (state: { auth?: AuthState }): boolean =>
+  state?.auth?.isAuthenticated ?? false;

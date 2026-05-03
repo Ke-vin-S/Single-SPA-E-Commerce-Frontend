@@ -77,7 +77,7 @@ export const AdminDashboard: React.FC = () => {
 
   return (
     <div>
-      <h2 className="admin-greeting">Welcome back, {user?.name}</h2>
+      <h2 className="admin-greeting">Welcome back, {user?.firstName || user?.name}</h2>
 
       <div className="admin-stats">
         {stats.map((stat) => (

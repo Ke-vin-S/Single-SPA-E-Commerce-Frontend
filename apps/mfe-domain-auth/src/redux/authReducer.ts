@@ -2,10 +2,13 @@ import { authSlice } from './authSlice';
 
 export const authReducer = authSlice.reducer;
 
+export { authSlice } from './authSlice';
 export {
-  setAuth,
-  clearAuth,
+  setUser,
+  clearUser,
   setLoading,
   setError,
   selectAuth,
+  selectUser,
+  selectIsAuthenticated,
 } from './authSlice';

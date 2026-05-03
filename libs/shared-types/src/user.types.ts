@@ -11,9 +11,6 @@ export interface Address {
 }
 
 export interface UserProfile {
-  id: string;
-  email: string;
-  name: string;
   phone?: string;
   avatarUrl?: string;
 }

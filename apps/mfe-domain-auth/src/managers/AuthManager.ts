@@ -1,11 +1,5 @@
 import { apiClient, API_ENDPOINTS } from '@miniecommerce-sysco/shared-api';
 import type { LoginResponse, RegisterRequest, User } from '@miniecommerce-sysco/shared-types';
-import {
-  setAuth,
-  clearAuth,
-  setLoading,
-  setError,
-} from '../redux/authReducer';
 
 const dispatch = (action: { type: string; payload?: unknown }): void => {
   window.reduxStore?.dispatch?.(action);
@@ -13,40 +7,40 @@ const dispatch = (action: { type: string; payload?: unknown }): void => {
 
 export class AuthManager {
   async login(email: string, password: string): Promise<LoginResponse> {
-    dispatch(setLoading(true));
+    dispatch({ type: 'auth/setLoading', payload: true });
     try {
       const response = await apiClient.post<LoginResponse>(
         API_ENDPOINTS.AUTH.LOGIN,
         { email, password }
       );
-      const { token, user } = response.data;
-      dispatch(setAuth({ token, user }));
-      return { token, user };
+      const { user } = response.data;
+      dispatch({ type: 'auth/setUser', payload: user });
+      return { user };
     } catch (error) {
       const message = error instanceof Error ? error.message : 'Login failed';
-      dispatch(setError(message));
+      dispatch({ type: 'auth/setError', payload: message });
       throw error;
     } finally {
-      dispatch(setLoading(false));
+      dispatch({ type: 'auth/setLoading', payload: false });
     }
   }
 
-  async register(payload: RegisterRequest): Promise<LoginResponse> {
-    dispatch(setLoading(true));
+  async register(email: string, password: string, firstName: string, lastName: string): Promise<LoginResponse> {
+    dispatch({ type: 'auth/setLoading', payload: true });
     try {
       const response = await apiClient.post<LoginResponse>(
         API_ENDPOINTS.AUTH.REGISTER,
-        payload
+        { email, password, firstName, lastName }
       );
-      const { token, user } = response.data;
-      dispatch(setAuth({ token, user }));
-      return { token, user };
+      const { user } = response.data;
+      dispatch({ type: 'auth/setUser', payload: user });
+      return { user };
     } catch (error) {
       const message = error instanceof Error ? error.message : 'Registration failed';
-      dispatch(setError(message));
+      dispatch({ type: 'auth/setError', payload: message });
       throw error;
     } finally {
-      dispatch(setLoading(false));
+      dispatch({ type: 'auth/setLoading', payload: false });
     }
   }
 
@@ -56,15 +50,18 @@ export class AuthManager {
     } catch (error) {
       console.error('Logout request failed:', error);
     } finally {
-      dispatch(clearAuth());
+      dispatch({ type: 'auth/clearUser' });
     }
   }
 
-  async fetchCurrentUser(): Promise<User | null> {
+  async getMe(): Promise<User | null> {
     try {
-      const response = await apiClient.get<User>(API_ENDPOINTS.AUTH.ME);
-      return response.data;
+      const response = await apiClient.get<{ user: User }>(API_ENDPOINTS.AUTH.ME);
+      const user = response.data.user;
+      dispatch({ type: 'auth/setUser', payload: user });
+      return user;
     } catch {
+      dispatch({ type: 'auth/clearUser' });
       return null;
     }
   }

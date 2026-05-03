@@ -1,6 +1,7 @@
 import React from 'react';
 import { createRoot, type Root } from 'react-dom/client';
 import { userReducer } from './redux/userReducer';
+import { userManager } from './managers/UserManager';
 import { App } from './App';
 
 interface MountProps {
@@ -14,6 +15,11 @@ export async function bootstrap(): Promise<void> {
     window.injectReducer('user', userReducer);
     // eslint-disable-next-line no-console
     console.log('[mfe-domain-user] user reducer injected');
+  }
+  try {
+    await userManager.fetchProfile();
+  } catch {
+    // User may not be authenticated.
   }
 }
 

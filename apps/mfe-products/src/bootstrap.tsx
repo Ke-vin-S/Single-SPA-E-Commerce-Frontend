@@ -1,5 +1,6 @@
 import React from 'react';
 import { createRoot, type Root } from 'react-dom/client';
+import { productManager } from './managers/ProductManager';
 import { App } from './App';
 
 interface MountProps {
@@ -10,6 +11,12 @@ let root: Root | null = null;
 
 export async function bootstrap(): Promise<void> {
   // Feature MFE — no reducer to inject.
+  // Preload products catalogue.
+  try {
+    await productManager.getProducts();
+  } catch {
+    // Products will be fetched on mount if preload fails.
+  }
 }
 
 export async function mount(props: MountProps): Promise<void> {

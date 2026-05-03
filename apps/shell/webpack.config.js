@@ -32,6 +32,10 @@ module.exports = (_, argv) => {
           __dirname,
           '../../libs/shared-api/src'
         ),
+        '@miniecommerce-sysco/mfe-domain-auth': path.resolve(
+          __dirname,
+          '../mfe-domain-auth/src'
+        ),
       },
     },
     module: {

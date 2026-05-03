@@ -1,7 +1,7 @@
 export {
   authReducer,
-  setAuth,
-  clearAuth,
+  setUser,
+  clearUser,
   setLoading,
   setError,
   selectAuth,

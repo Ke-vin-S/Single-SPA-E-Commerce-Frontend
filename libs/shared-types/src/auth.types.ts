@@ -7,8 +7,10 @@ export enum UserRole {
 export interface User {
   id: string;
   email: string;
-  name: string;
-  role: UserRole;
+  firstName: string;
+  lastName: string;
+  name?: string;
+  role?: UserRole;
 }
 
 export interface LoginRequest {
@@ -17,18 +19,17 @@ export interface LoginRequest {
 }
 
 export interface LoginResponse {
-  token: string;
   user: User;
 }
 
 export interface RegisterRequest {
   email: string;
   password: string;
-  name: string;
+  firstName: string;
+  lastName: string;
 }
 
 export interface AuthState {
-  token: string | null;
   user: User | null;
   isAuthenticated: boolean;
   isLoading: boolean;

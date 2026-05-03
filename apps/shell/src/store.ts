@@ -5,9 +5,11 @@ import {
   type ReducersMapObject,
 } from '@reduxjs/toolkit';
 import { headerSlice } from './redux/headerSlice';
+import { authSlice } from '@miniecommerce-sysco/mfe-domain-auth';
 
 const baseReducers: ReducersMapObject = {
   header: headerSlice.reducer,
+  auth: authSlice.reducer,
 };
 
 const dynamicReducers: ReducersMapObject = {};
@@ -40,6 +42,15 @@ export {
   resetHeader,
   selectHeader,
 } from './redux/headerSlice';
+
+export {
+  setUser,
+  clearUser,
+  setLoading as setAuthLoading,
+  setError as setAuthError,
+  selectUser,
+  selectIsAuthenticated,
+} from '@miniecommerce-sysco/mfe-domain-auth';
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;

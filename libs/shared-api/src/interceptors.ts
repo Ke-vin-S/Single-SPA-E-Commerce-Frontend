@@ -1,31 +1,11 @@
 import type { AxiosInstance, AxiosError, InternalAxiosRequestConfig } from 'axios';
 
-interface AuthSlice {
-  token?: string | null;
-}
-
-interface RefreshResponse {
-  token: string;
-}
-
-const SET_AUTH = 'auth/setAuth';
-const CLEAR_AUTH = 'auth/clearAuth';
-
-const getToken = (): string | undefined => {
-  try {
-    const state = window.reduxStore?.getState?.() as { auth?: AuthSlice } | undefined;
-    return state?.auth?.token ?? undefined;
-  } catch {
-    return undefined;
-  }
-};
+const CLEAR_AUTH = 'auth/clearUser';
 
 export const setupInterceptors = (client: AxiosInstance): void => {
   client.interceptors.request.use((config: InternalAxiosRequestConfig) => {
-    const token = getToken();
-    if (token) {
-      config.headers.set('Authorization', `Bearer ${token}`);
-    }
+    // Cookies are sent automatically via withCredentials.
+    // No need to manually set Authorization header.
     return config;
   });
 
@@ -44,15 +24,7 @@ export const setupInterceptors = (client: AxiosInstance): void => {
       ) {
         originalRequest._retried = true;
         try {
-          const refreshResponse = await client.post<RefreshResponse>('/auth/refresh');
-          const { token } = refreshResponse.data;
-
-          window.reduxStore?.dispatch?.({
-            type: SET_AUTH,
-            payload: { token },
-          });
-
-          originalRequest.headers.set('Authorization', `Bearer ${token}`);
+          await client.post('/auth/refresh');
           return client(originalRequest);
         } catch (refreshError) {
           window.reduxStore?.dispatch?.({ type: CLEAR_AUTH });

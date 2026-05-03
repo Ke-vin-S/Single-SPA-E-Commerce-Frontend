@@ -49,6 +49,12 @@ export const userSlice = createSlice({
     },
     clearUser: () => initialState,
   },
+  extraReducers: (builder) => {
+    builder.addMatcher(
+      (action): action is { type: string } => action.type === 'auth/clearUser',
+      () => initialState
+    );
+  },
 });
 
 export const {

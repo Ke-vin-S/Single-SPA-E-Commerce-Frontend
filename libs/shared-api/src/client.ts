@@ -3,7 +3,7 @@ import { setupInterceptors } from './interceptors';
 
 const baseURL =
   (typeof process !== 'undefined' && process.env?.REACT_APP_API_URL) ||
-  'http://localhost:5000';
+  'http://localhost:4001/api/v1';
 
 export const apiClient: AxiosInstance = axios.create({
   baseURL,
@@ -11,6 +11,7 @@ export const apiClient: AxiosInstance = axios.create({
   headers: {
     'Content-Type': 'application/json',
   },
+  withCredentials: true,
 });
 
 setupInterceptors(apiClient);

@@ -1,6 +1,5 @@
 import React from 'react';
 import { createRoot, type Root } from 'react-dom/client';
-import { authManager } from './managers/AuthManager';
 import { App } from './App';
 
 interface MountProps {
@@ -10,13 +9,7 @@ interface MountProps {
 let root: Root | null = null;
 
 export async function bootstrap(): Promise<void> {
-  // Auth reducer is now registered in the shell store.
-  // Validate session on bootstrap.
-  try {
-    await authManager.getMe();
-  } catch {
-    // Not authenticated — state is already cleared by getMe.
-  }
+  // Feature MFE — no reducer to inject.
 }
 
 export async function mount(props: MountProps): Promise<void> {

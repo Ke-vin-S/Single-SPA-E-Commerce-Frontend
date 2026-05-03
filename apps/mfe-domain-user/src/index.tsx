@@ -6,9 +6,6 @@ export {
   userReducer,
   setProfile,
   setAddresses,
-  addAddress,
-  updateAddress,
-  removeAddress,
   setPreferences,
   setLoading,
   setError,
@@ -17,7 +14,6 @@ export {
 } from './redux/userReducer';
 
 export type {
-  Address,
   UserProfile,
   UserPreferences,
   UserState,

@@ -56,5 +56,12 @@ export const registerMicroFrontends = (): void => {
     customProps: { domElement: document.getElementById('mfe-content') },
   });
 
+  registerApplication({
+    name: '@miniecommerce-sysco/mfe-orders',
+    app: () => loadModule('@miniecommerce-sysco/mfe-orders'),
+    activeWhen: pathStartsWith('/orders'),
+    customProps: { domElement: document.getElementById('mfe-content') },
+  });
+
   start({ urlRerouteOnly: true });
 };

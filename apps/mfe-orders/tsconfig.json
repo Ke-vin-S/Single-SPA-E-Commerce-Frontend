@@ -8,10 +8,11 @@
     "baseUrl": ".",
     "paths": {
       "@miniecommerce-sysco/mfe-design-system": ["../mfe-design-system/src"],
-      "@miniecommerce-sysco/shared-types": ["../../libs/shared-types/src"],
+      "@miniecommerce-sysco/mfe-domain-auth": ["../mfe-domain-auth/src"],
+      "@miniecommerce-sysco/mfe-domain-cart": ["../mfe-domain-cart/src"],
       "@miniecommerce-sysco/shared-code": ["../../libs/shared-code/src"],
-      "@miniecommerce-sysco/shared-api": ["../../libs/shared-api/src"],
-      "@miniecommerce-sysco/mfe-domain-auth": ["../mfe-domain-auth/src"]
+      "@miniecommerce-sysco/shared-types": ["../../libs/shared-types/src"],
+      "@miniecommerce-sysco/shared-api": ["../../libs/shared-api/src"]
     }
   },
   "include": ["src/**/*"],

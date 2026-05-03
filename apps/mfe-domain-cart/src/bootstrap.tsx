@@ -1,7 +1,7 @@
 import React from 'react';
 import { createRoot, type Root } from 'react-dom/client';
 import { cartReducer } from './redux/cartReducer';
-import { setupCartPersistence } from './persistence';
+import { cartManager } from './managers/CartManager';
 import { App } from './App';
 
 interface MountProps {
@@ -16,7 +16,11 @@ export async function bootstrap(): Promise<void> {
     // eslint-disable-next-line no-console
     console.log('[mfe-domain-cart] cart reducer injected');
   }
-  setupCartPersistence();
+  try {
+    await cartManager.fetchCart();
+  } catch {
+    // Cart may be empty or user not authenticated.
+  }
 }
 
 export async function mount(props: MountProps): Promise<void> {

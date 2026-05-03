@@ -8,28 +8,20 @@ export const API_ENDPOINTS = {
   },
   CART: {
     GET: '/cart',
-    ADD: '/cart/add',
-    REMOVE: (id: string) => `/cart/remove/${id}`,
-    UPDATE: (id: string) => `/cart/update/${id}`,
+    ADD: '/cart/items',
+    REMOVE: (id: string) => `/cart/items/${id}`,
+    UPDATE: (id: string) => `/cart/items/${id}`,
     CLEAR: '/cart/clear',
   },
   PRODUCTS: {
     LIST: '/products',
     GET: (id: string) => `/products/${id}`,
-    SEARCH: '/products/search',
   },
   USER: {
-    PROFILE: '/user/profile',
-    UPDATE_PROFILE: '/user/profile',
-    ADDRESSES: '/user/addresses',
-    ADD_ADDRESS: '/user/addresses',
-    UPDATE_ADDRESS: (id: string) => `/user/addresses/${id}`,
-    DELETE_ADDRESS: (id: string) => `/user/addresses/${id}`,
-    PREFERENCES: '/user/preferences',
+    PROFILE: '/users/me',
+    UPDATE_PROFILE: '/users/me',
   },
   ORDERS: {
     LIST: '/orders',
-    GET: (id: string) => `/orders/${id}`,
-    CREATE: '/orders',
   },
 } as const;

@@ -12,7 +12,8 @@ export const RegisterPage: React.FC = () => {
   const dispatch = useDispatch();
   const { register, isLoading, error } = useAuth();
 
-  const [name, setName] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -28,7 +29,7 @@ export const RegisterPage: React.FC = () => {
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      await register({ name, email, password });
+      await register(email, password, firstName, lastName);
       window.location.assign('/products');
     } catch {
       /* error in state */
@@ -45,12 +46,20 @@ export const RegisterPage: React.FC = () => {
 
         <Form onSubmit={onSubmit}>
           <Input
-            label="Full name"
-            placeholder="Jane Doe"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
+            label="First name"
+            placeholder="Jane"
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
             required
-            autoComplete="name"
+            autoComplete="given-name"
+          />
+          <Input
+            label="Last name"
+            placeholder="Doe"
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+            required
+            autoComplete="family-name"
           />
           <Input
             label="Email"

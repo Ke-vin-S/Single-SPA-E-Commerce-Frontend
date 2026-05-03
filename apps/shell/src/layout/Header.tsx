@@ -10,9 +10,21 @@ import type { HeaderState } from '@miniecommerce-sysco/shared-types';
 
 interface RootSlice {
   header?: HeaderState;
-  auth?: { user?: { name?: string } | null };
+  auth?: { user?: { firstName?: string; lastName?: string; name?: string } | null };
   cart?: { itemCount?: number };
 }
+
+interface UserInfo {
+  firstName?: string;
+  lastName?: string;
+  name?: string;
+}
+
+const displayName = (user: UserInfo | null): string => {
+  if (!user) return 'Sign in';
+  if (user.name) return user.name;
+  return [user.firstName, user.lastName].filter(Boolean).join(' ') || 'Account';
+};
 
 export const Header: React.FC = () => {
   const header = useSelector((s: RootSlice) => s.header);
@@ -63,6 +75,9 @@ export const Header: React.FC = () => {
           <a href="/products" className="shell-nav__link">
             Catalog
           </a>
+          <a href="/orders" className="shell-nav__link">
+            Orders
+          </a>
           <a href="/admin" className="shell-nav__link">
             Admin
           </a>
@@ -70,7 +85,7 @@ export const Header: React.FC = () => {
           {header.showUser && (
             <a
               href={user ? '/account' : '/auth/login'}
-              aria-label={user?.name ?? 'Sign in'}
+              aria-label={displayName(user)}
               className="ds-icon-button"
             >
               <UserIcon />

@@ -11,4 +11,7 @@ export {
   setLoading,
   setError,
   selectCart,
+  setOrders,
+  setOrdersLoading,
+  setOrdersError,
 } from './cartSlice';

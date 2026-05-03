@@ -10,7 +10,10 @@ export interface CartItem {
 export interface Cart {
   items: CartItem[];
   total: number;
+  itemCount?: number;
 }
+
+import type { Order } from './common.types';
 
 export interface CartState {
   items: CartItem[];
@@ -18,4 +21,7 @@ export interface CartState {
   itemCount: number;
   isLoading: boolean;
   error: string | null;
+  orders: Order[];
+  ordersLoading: boolean;
+  ordersError: string | null;
 }
