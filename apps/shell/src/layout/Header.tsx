@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import {
   Badge,
@@ -6,6 +6,7 @@ import {
   UserIcon,
   SearchIcon,
 } from '@miniecommerce-sysco/mfe-design-system';
+import { authManager } from '@miniecommerce-sysco/mfe-domain-auth';
 import type { HeaderState } from '@miniecommerce-sysco/shared-types';
 
 interface RootSlice {
@@ -30,10 +31,28 @@ export const Header: React.FC = () => {
   const header = useSelector((s: RootSlice) => s.header);
   const user = useSelector((s: RootSlice) => s.auth?.user ?? null);
   const itemCount = useSelector((s: RootSlice) => s.cart?.itemCount ?? 0);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClick = (e: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
+        setMenuOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClick);
+    return () => document.removeEventListener('mousedown', handleClick);
+  }, []);
 
   if (!header?.isVisible) return null;
 
   const pageTitle = header.fields.title?.trim();
+
+  const handleLogout = async () => {
+    setMenuOpen(false);
+    await authManager.logout();
+    window.location.assign('/');
+  };
 
   return (
     <header className="shell-header">
@@ -83,13 +102,39 @@ export const Header: React.FC = () => {
           </a>
 
           {header.showUser && (
-            <a
-              href={user ? '/account' : '/auth/login'}
-              aria-label={displayName(user)}
-              className="ds-icon-button"
-            >
-              <UserIcon />
-            </a>
+            <div ref={menuRef} className="shell-user-menu">
+              {user ? (
+                <>
+                  <button
+                    className="shell-nav__link shell-user-toggle"
+                    onClick={() => setMenuOpen((v) => !v)}
+                    aria-expanded={menuOpen}
+                    aria-haspopup="true"
+                  >
+                    <UserIcon />
+                    {displayName(user)}
+                  </button>
+                  {menuOpen && (
+                    <div className="shell-user-dropdown">
+                      <a href="/account" className="shell-user-dropdown__item">
+                        Account settings
+                      </a>
+                      <button
+                        className="shell-user-dropdown__item"
+                        onClick={handleLogout}
+                      >
+                        Logout
+                      </button>
+                    </div>
+                  )}
+                </>
+              ) : (
+                <a href="/auth/login" className="shell-nav__link">
+                  <UserIcon />
+                  Sign in
+                </a>
+              )}
+            </div>
           )}
 
           {header.showCart && (

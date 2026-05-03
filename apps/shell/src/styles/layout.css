@@ -136,6 +136,8 @@
 
 .shell-nav__link {
   display: none;
+  align-items: center;
+  gap: var(--space-2);
   padding: var(--space-2) var(--space-3);
   font-size: var(--text-sm);
   font-weight: var(--weight-medium);
@@ -156,6 +158,53 @@
 
 .shell-cart {
   position: relative;
+}
+
+.shell-user-menu {
+  position: relative;
+}
+
+.shell-user-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.shell-user-dropdown {
+  position: absolute;
+  top: calc(100% + var(--space-2));
+  right: 0;
+  min-width: 180px;
+  background: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-2);
+  z-index: 60;
+}
+
+.shell-user-dropdown__item {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  color: var(--color-text);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: background var(--motion-fast) var(--ease-out);
+}
+
+.shell-user-dropdown__item:hover {
+  background: var(--color-surface);
 }
 
 /* Header-scoped icon button overrides (white on blue) */
