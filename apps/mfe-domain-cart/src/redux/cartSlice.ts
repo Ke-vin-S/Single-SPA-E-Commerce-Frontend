@@ -2,6 +2,7 @@ import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 import type { CartItem, CartState, Order } from '@miniecommerce-sysco/shared-types';
 
 const initialState: CartState = {
+  cartId: null,
   items: [],
   total: 0,
   itemCount: 0,
@@ -21,6 +22,9 @@ export const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
+    setCartId: (state, action: PayloadAction<string | null>) => {
+      state.cartId = action.payload;
+    },
     setCart: (state, action: PayloadAction<CartItem[]>) => {
       state.items = action.payload;
       const totals = recompute(action.payload);
@@ -82,6 +86,7 @@ export const cartSlice = createSlice({
 });
 
 export const {
+  setCartId,
   setCart,
   addItemLocal,
   removeItemLocal,

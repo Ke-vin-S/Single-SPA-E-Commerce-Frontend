@@ -8,6 +8,7 @@ export interface CartItem {
 }
 
 export interface Cart {
+  id?: string;
   items: CartItem[];
   total: number;
   itemCount?: number;
@@ -16,6 +17,7 @@ export interface Cart {
 import type { Order } from './common.types';
 
 export interface CartState {
+  cartId: string | null;
   items: CartItem[];
   total: number;
   itemCount: number;

@@ -8,10 +8,10 @@ export const API_ENDPOINTS = {
   },
   CART: {
     GET: '/cart',
-    ADD: '/cart/items',
-    REMOVE: (id: string) => `/cart/items/${id}`,
-    UPDATE: (id: string) => `/cart/items/${id}`,
-    CLEAR: '/cart/clear',
+    ADD: (cartId: string) => `/cart/${cartId}/items`,
+    REMOVE: (cartId: string, id: string) => `/cart/${cartId}/items/${id}`,
+    UPDATE: (cartId: string, id: string) => `/cart/${cartId}/items/${id}`,
+    CLEAR: (cartId: string) => `/cart/${cartId}/clear`,
   },
   PRODUCTS: {
     LIST: '/products',

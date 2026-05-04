@@ -4,6 +4,7 @@ import type { CartItem, CartState, Order, Product } from '@miniecommerce-sysco/s
 import { cartManager } from '../managers/CartManager';
 
 interface UseCartReturn {
+  cartId: string | null;
   items: CartItem[];
   total: number;
   itemCount: number;
@@ -41,6 +42,7 @@ export const useCart = (): UseCartReturn => {
   }, []);
 
   return {
+    cartId: cart?.cartId ?? null,
     items: cart?.items ?? [],
     total: cart?.total ?? 0,
     itemCount: cart?.itemCount ?? 0,
